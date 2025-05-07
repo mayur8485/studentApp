@@ -1,7 +1,4 @@
 import { Routes } from '@angular/router';
-import { CreateStudentComponent } from './create-student/create-student.component';
-import { ListStudentComponent } from './list-student/list-student.component';
-
 export const routes: Routes = [
   {
     path: '',
@@ -10,15 +7,24 @@ export const routes: Routes = [
   },
   {
     path: 'register',
-    component: CreateStudentComponent,
+    loadComponent: () =>
+      import('./create-student/create-student.component').then(
+        (m) => m.CreateStudentComponent
+      ),
   },
   {
     path: 'register/:id',
-    component: CreateStudentComponent,
+    loadComponent: () =>
+      import('./create-student/create-student.component').then(
+        (m) => m.CreateStudentComponent
+      ),
   },
   {
     path: 'list',
-    component: ListStudentComponent,
+    loadComponent: () =>
+      import('./list-student/list-student.component').then(
+        (m) => m.ListStudentComponent
+      ),
   },
   {
     path: '**',
