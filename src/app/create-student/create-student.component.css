@@ -1,0 +1,60 @@
+.centered-align {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.container {
+  width: 50%;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: white;
+}
+
+.heading {
+  text-align: center;
+}
+
+.form-container {
+  margin-top: 1rem;
+}
+
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-6 {
+  width: 50%;
+}
+
+.col-12 {
+  width: 100%;
+}
+
+.col-6,
+.col-12 {
+  box-sizing: border-box;
+  padding-right: 8px;
+  padding-bottom: 16px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.alert {
+  color: red;
+}
+
+@media (max-width: 1400px) {
+  .col-6 {
+    width: 100%;
+  }
+}

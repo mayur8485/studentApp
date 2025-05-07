@@ -1,0 +1,104 @@
+<div class="main centered-align">
+  <div class="container">
+    <h1 class="heading">Student Registeration</h1>
+    <mat-divider></mat-divider>
+    <div class="form-container">
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="flex-row">
+          <div class="col-6">
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" required />
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" required />
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Address 1</mat-label>
+              <input
+                matInput
+                formControlName="address1"
+                required
+                placeholder="Flat No 123, Apt"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Address 2</mat-label>
+              <input
+                matInput
+                formControlName="address2"
+                required
+                placeholder="Street, Area"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Standard</mat-label>
+              <mat-select formControlName="standard" required>
+                <mat-option *ngFor="let std of standards" [value]="std.value">
+                  {{ std.label }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <label style="display: block"
+              >Gender <span class="alert">*</span></label
+            >
+            <mat-radio-group
+              formControlName="gender"
+              class="full-width"
+              required
+            >
+              <mat-radio-button value="Male">Male</mat-radio-button>
+              <mat-radio-button value="Female">Female</mat-radio-button>
+              <mat-radio-button value="Other">Other</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="col-6">
+            <label style="display: block"
+              >Likes <span class="alert">*</span></label
+            >
+            <mat-checkbox formControlName="likesCricket">Cricket</mat-checkbox>
+            <mat-checkbox formControlName="likesReading">Reading</mat-checkbox>
+            <mat-checkbox formControlName="likesMusic">Music</mat-checkbox>
+          </div>
+        </div>
+
+        <div class="centered-align">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            style="margin-right: 10px"
+          >
+            {{ mode === "CREATE" ? "Submit" : "Update" }}
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="onCancel()"
+          >
+            Cancel
+          </button>
+        </div>
+        <div
+          class="centered-align alert"
+          style="margin-top: 10px"
+          *ngIf="hasError"
+        >
+          Please fill the required fields
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

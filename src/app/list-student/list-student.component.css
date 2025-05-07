@@ -1,0 +1,13 @@
+.container {
+  padding: 10px;
+}
+
+.table-container {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+table {
+  width: 100%;
+}
