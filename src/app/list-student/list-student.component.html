@@ -22,13 +22,17 @@
       <!-- First Name Column -->
       <ng-container matColumnDef="firstName">
         <th mat-header-cell *matHeaderCellDef>First Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ element.firstName | truncate : 20 }}
+        </td>
       </ng-container>
 
       <!-- Last Name Column -->
       <ng-container matColumnDef="lastName">
         <th mat-header-cell *matHeaderCellDef>Last Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ element.lastName | truncate : 20 }}
+        </td>
       </ng-container>
 
       <!-- Gender Column -->

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,6 +21,7 @@ import { StudentsService } from '../shared/students.service';
   imports: [
     NgFor,
     NgIf,
+    NgClass,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -43,6 +44,8 @@ export class CreateStudentComponent implements OnInit {
   editStudentId: number = -1;
 
   hasError: boolean = false;
+  genderHasError: boolean = false;
+  formSubmitted: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -88,6 +91,17 @@ export class CreateStudentComponent implements OnInit {
       likesReading: [false],
       likesMusic: [false],
     });
+
+    // This is to chnage error message from enable to disable if form is valid
+    this.form.valueChanges.subscribe(() => {
+      if (this.formSubmitted) {
+        this.hasError = !this.form.valid;
+      }
+    });
+  }
+
+  onGenderSelected() {
+    this.genderHasError = false;
   }
 
   getRandomId() {
@@ -111,6 +125,7 @@ export class CreateStudentComponent implements OnInit {
   }
 
   submit() {
+    this.formSubmitted = true;
     if (this.form.valid) {
       const studentInfo = this.form.value;
       if (this.mode === 'CREATE') {
@@ -118,11 +133,13 @@ export class CreateStudentComponent implements OnInit {
       } else {
         this.updateStudent(studentInfo);
       }
+      this.navigateToList();
       this.form.reset();
       this.editStudentId = -1;
-      this.navigateToList();
     } else {
       this.hasError = true;
+      this.genderHasError =
+        this.form.get('gender')?.hasError('required') || false;
     }
   }
 

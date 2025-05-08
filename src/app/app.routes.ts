@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
+import { ListStudentComponent } from './list-student/list-student.component';
 export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'register',
+    redirectTo: 'list',
   },
   {
     path: 'register',
@@ -21,13 +22,10 @@ export const routes: Routes = [
   },
   {
     path: 'list',
-    loadComponent: () =>
-      import('./list-student/list-student.component').then(
-        (m) => m.ListStudentComponent
-      ),
+    component: ListStudentComponent,
   },
   {
     path: '**',
-    redirectTo: 'register',
+    redirectTo: 'list',
   },
 ];

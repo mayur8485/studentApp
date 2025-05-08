@@ -50,13 +50,14 @@
             </mat-form-field>
           </div>
           <div class="col-6">
-            <label style="display: block"
-              >Gender <span class="alert">*</span></label
+            <label style="display: block" [ngClass]="{ alert: genderHasError }">
+              Gender <span class="alert">*</span></label
             >
             <mat-radio-group
               formControlName="gender"
               class="full-width"
               required
+              (change)="onGenderSelected()"
             >
               <mat-radio-button value="Male">Male</mat-radio-button>
               <mat-radio-button value="Female">Female</mat-radio-button>

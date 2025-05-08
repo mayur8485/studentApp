@@ -19,6 +19,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
+import { TruncatePipe } from '../shared/truncate.pipe';
 
 @Component({
   selector: 'app-list-student',
@@ -29,6 +30,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
+    TruncatePipe,
   ],
   standalone: true,
   templateUrl: './list-student.component.html',
